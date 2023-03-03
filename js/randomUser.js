@@ -23,10 +23,10 @@ function displayUser(data)
 
     // get image
     const imageElement = document.getElementById("image");
-   const link= data.results[0].picture.medium;
+   const link= data.results[0].picture.large
    const imageDiv = document.createElement("div");
    imageDiv.innerHTML = `
-   <img src = "link">
+   <img src = "${link}">
    `;
    imageElement.appendChild(imageDiv);
 
