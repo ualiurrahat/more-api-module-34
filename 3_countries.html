@@ -1,20 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Countries</title>
+    <style>
+        #country-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+
+        }
+
+        .country {
+            border: 2px solid tomato;
+            border-radius: 5px;
+            padding: 5px;
+        }
+    </style>
 </head>
+
 <body>
-    
-<h1>All Countries</h1>
-<div id="country-container">
-    
-</div>
+
+    <h1>All Countries</h1>
+    <section id="country-detail">
+
+    </section>
+    <div id="country-container">
+
+    </div>
 
 
     <!-- js file  -->
     <script src="js/countries.js"></script>
 </body>
+
 </html>
