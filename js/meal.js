@@ -23,15 +23,18 @@ const displayMeals = (meal) => {
             <h5 class="card-title">${meal.strMeal}</h5>
             <p class="card-text">This is a longer card with supporting text below as a natural lead-in
                 to additional content. This content is a little bit longer.</p>
+            <button onclick = "loadMealDetail(${meal.idMeal})" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mealDetails">
+            Details
+            </button>
         </div>
-    </div>`;
-    // 4. append chiled element with parent container
-    mealContainer.appendChild(mealDiv);
+        </div>`;
+        // 4. append chiled element with parent container
+        mealContainer.appendChild(mealDiv);
     });
 }
-const searchMeals = () =>{
+const searchMeals = () => {
     // take user search query from search field value
-    const searchField =document.getElementById("search-field");
+    const searchField = document.getElementById("search-field");
     const searchText = searchField.value;
     console.log(searchText);
     // set search query value to null
@@ -39,6 +42,22 @@ const searchMeals = () =>{
     // now search food according to user search text
     loadMeals(searchText);
 
+
+}
+
+const loadMealDetail = idMeal =>{
+    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`;
+    fetch(url)
+    .then(res =>res.json())
+    .then(data =>displayMealDetail(data.meals[0]))
     
+}
+
+const displayMealDetail = meal=>{
+    document.getElementById("mealDetailsLabel").innerText = meal.strMeal;
+    const mealDetailBody = document.getElementById("mealDetailBody");
+    mealDetailBody.innerHTML = `
+    <img class="img-fluid" src="${meal.strMealThumb}">
+    `;
 }
 loadMeals('rice');
